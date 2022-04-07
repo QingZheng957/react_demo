@@ -7,13 +7,18 @@ import React, {
     useRef,
 } from 'react'
 import { Button, Modal, notification, Table } from 'antd'
+
 //导入api请求
 import { getProjectList, deleteById, createPorject, updatePorject } from '@/api/api'
+
 //导入创建弹窗
 import PoojectModal from './components/modal'
+
 import './index.less'
+
 //定义响应成功  status常量
 const OK = 'OK'
+
 //使用memo创建函数组件  性能开销小  利于维护
 const Index = memo((): ReactElement => {
     //控制弹窗是否显示
@@ -23,7 +28,8 @@ const Index = memo((): ReactElement => {
         page: 1,
         pageSize: 10,
     })
-    //弹窗类型
+
+    //判断弹窗类型是修改或创建
     const [modalType, setModalType] = useState<'edit' | 'create'>('create')
     //编辑
     const [propsData, setPropsData] = useState<any>({})
